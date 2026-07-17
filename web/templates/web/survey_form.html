@@ -1,0 +1,29 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block title %}Take Survey{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 id="survey-name-heading">Survey</h1>
+    <p><a href="{% url 'web:available-surveys' %}">&larr; Back to Surveys</a></p>
+  </div>
+</div>
+
+<div class="error-banner" id="error-banner"></div>
+
+<div class="card" id="form-card" style="display:none;">
+  <div class="step-label" id="step-label"></div>
+  <div class="stepper-progress" id="stepper-progress"></div>
+  <div id="step-content"></div>
+  <div class="form-actions">
+    <button type="button" class="btn btn-secondary" id="back-btn">Back</button>
+    <button type="button" class="btn" id="next-btn">Next</button>
+  </div>
+</div>
+
+<div class="empty-state" id="loading-state">Loading survey…</div>
+
+<script>const SURVEY_ID = {{ survey_id }};</script>
+<script src="{% static 'web/js/xml-utils.js' %}"></script>
+<script src="{% static 'web/js/survey-form.js' %}"></script>
+{% endblock %}

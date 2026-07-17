@@ -1,0 +1,20 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block title %}Available Surveys{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>Available Surveys</h1>
+    <p>Pick a survey below to get started.</p>
+  </div>
+</div>
+
+<div class="error-banner" id="error-banner"></div>
+
+<div class="survey-grid" id="survey-grid">
+  <div class="empty-state">Loading surveys…</div>
+</div>
+
+<script src="{% static 'web/js/xml-utils.js' %}"></script>
+<script src="{% static 'web/js/available-surveys.js' %}"></script>
+{% endblock %}
