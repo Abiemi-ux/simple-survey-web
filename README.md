@@ -2,7 +2,7 @@
 
 A Django + vanilla JavaScript frontend for the Sky Survey Platform. No
 frontend framework or build step — plain templates, `fetch()`, and
-`DOMParser` talking to the [Survey API](https://github.com/<your-username>/simple-survey-api)
+`DOMParser` talking to the [Survey API](https://github.com/abiemi-ux/simple-survey-api)
 over XML.
 
 ## Live Demo
