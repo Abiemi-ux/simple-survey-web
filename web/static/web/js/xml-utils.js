@@ -1,4 +1,4 @@
-const API_BASE = "https://simple-survey-api-iow2.onrender.com/api/";
+const API_BASE = "https://simple-survey-api-iow2.onrender.com/api";
 
 function escapeXml(value) {
   return String(value ?? "")
