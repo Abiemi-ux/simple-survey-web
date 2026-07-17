@@ -1,0 +1,44 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block title %}Responses{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 id="survey-name-heading">Responses</h1>
+    <p><a href="{% url 'web:survey-list' %}">&larr; Back to Surveys</a></p>
+  </div>
+</div>
+
+<div class="error-banner" id="error-banner"></div>
+
+<div class="filter-bar">
+  <div class="form-row">
+    <label for="email-filter">Filter by email</label>
+    <input type="text" id="email-filter" placeholder="jane@gmail.com">
+  </div>
+  <button class="btn btn-secondary" id="filter-btn">Search</button>
+  <button class="btn btn-secondary" id="clear-filter-btn">Clear</button>
+</div>
+
+<div class="card">
+  <div class="responses-table-wrap">
+    <table>
+      <thead id="responses-thead"></thead>
+      <tbody id="responses-rows">
+        <tr><td class="empty-state">Loading responses…</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination">
+    <span id="pagination-summary"></span>
+    <div class="pagination-controls">
+      <button class="btn btn-secondary btn-sm" id="prev-page-btn">&larr; Previous</button>
+      <button class="btn btn-secondary btn-sm" id="next-page-btn">Next &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<script>const SURVEY_ID = {{ survey_id }};</script>
+<script src="{% static 'web/js/xml-utils.js' %}"></script>
+<script src="{% static 'web/js/response-list.js' %}"></script>
+{% endblock %}
