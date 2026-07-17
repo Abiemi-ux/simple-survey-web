@@ -1,0 +1,84 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block title %}Questions · Sky Survey Admin{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 id="survey-name-heading">Questions</h1>
+    <p><a href="{% url 'web:survey-list' %}">&larr; Back to Surveys</a></p>
+  </div>
+  <button class="btn" id="new-question-btn">+ New Question</button>
+</div>
+
+<div class="error-banner" id="error-banner"></div>
+
+<div class="card" id="question-form-card" style="display:none;">
+  <h2 id="question-form-title">New Question</h2>
+  <form id="question-form">
+    <input type="hidden" id="question-id">
+
+    <div class="form-row">
+      <label for="question-name">Field name (used as the API key, e.g. "full_name")</label>
+      <input type="text" id="question-name" pattern="[a-z0-9_-]+" required>
+    </div>
+
+    <div class="form-row">
+      <label for="question-text">Question text</label>
+      <input type="text" id="question-text" required>
+    </div>
+
+    <div class="form-row">
+      <label for="question-description">Helper text (optional)</label>
+      <input type="text" id="question-description">
+    </div>
+
+    <div class="form-row">
+      <label for="question-type">Type</label>
+      <select id="question-type">
+        <option value="short_text">Short Text</option>
+        <option value="long_text">Long Text</option>
+        <option value="email">Email</option>
+        <option value="choice">Choice</option>
+        <option value="file">File Upload</option>
+      </select>
+    </div>
+
+    <div class="form-row checkbox-row">
+      <input type="checkbox" id="question-required" checked>
+      <label for="question-required">Required</label>
+    </div>
+
+    <div id="choice-fields" style="display:none;">
+      <div class="form-row checkbox-row">
+        <input type="checkbox" id="question-allow-multiple">
+        <label for="question-allow-multiple">Allow selecting multiple options</label>
+      </div>
+      <div class="form-row">
+        <label>Options</label>
+        <div id="options-list" class="options-list"></div>
+        <button type="button" class="btn btn-secondary btn-sm" id="add-option-btn">+ Add option</button>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn">Save</button>
+      <button type="button" class="btn btn-secondary" id="cancel-question-btn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>Order</th><th>Name</th><th>Type</th><th>Required</th><th></th></tr>
+    </thead>
+    <tbody id="question-rows">
+      <tr><td colspan="5" class="empty-state">Loading questions…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>const SURVEY_ID = {{ survey_id }};</script>
+<script src="{% static 'web/js/xml-utils.js' %}"></script>
+<script src="{% static 'web/js/question-management.js' %}"></script>
+{% endblock %}

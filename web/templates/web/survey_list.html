@@ -1,0 +1,47 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block title %}Surveys · Sky Survey Admin{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>Surveys</h1>
+    <p>Create and manage your surveys.</p>
+  </div>
+  <button class="btn" id="new-survey-btn">+ New Survey</button>
+</div>
+
+<div class="error-banner" id="error-banner"></div>
+
+<div class="card" id="survey-form-card" style="display:none;">
+  <h2 id="survey-form-title">New Survey</h2>
+  <form id="survey-form">
+    <input type="hidden" id="survey-id">
+    <div class="form-row">
+      <label for="survey-name">Name</label>
+      <input type="text" id="survey-name" required>
+    </div>
+    <div class="form-row">
+      <label for="survey-description">Description</label>
+      <textarea id="survey-description"></textarea>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn">Save</button>
+      <button type="button" class="btn btn-secondary" id="cancel-survey-btn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Description</th><th></th></tr>
+    </thead>
+    <tbody id="survey-rows">
+      <tr><td colspan="3" class="empty-state">Loading surveys…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="{% static 'web/js/xml-utils.js' %}"></script>
+<script src="{% static 'web/js/survey-management.js' %}"></script>
+{% endblock %}
