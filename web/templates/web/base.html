@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Sky Survey Admin{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'web/css/styles.css' %}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="{% url 'web:survey-list' %}" class="brand">Sky Survey</a>
+      <nav>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'web:survey-list' %}">Surveys</a>
+
+                <form action="{% url 'web:logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit"
+                            style="background:none;border:none;padding:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;">
+                        Log out
+                    </button>
+                </form>
+            {% else %}
+                <a href="{% url 'web:available-surveys' %}">Take a Survey</a>
+                <a href="{% url 'web:login' %}">Admin Login</a>
+            {% endif %}
+        </nav>
+    </div>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

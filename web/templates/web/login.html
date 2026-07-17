@@ -1,0 +1,29 @@
+{% extends "web/base.html" %}
+{% block title %}Log in · Sky Survey Admin{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1>Admin Login</h1>
+    <p>Sign in to manage surveys, questions, and responses.</p>
+  </div>
+</div>
+
+<div class="card" style="max-width: 360px;">
+  {% if form.errors %}
+    <div class="error-banner visible">Incorrect username or password.</div>
+  {% endif %}
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-row">
+      <label for="id_username">Username</label>
+      <input type="text" name="username" id="id_username" required autofocus>
+    </div>
+    <div class="form-row">
+      <label for="id_password">Password</label>
+      <input type="password" name="password" id="id_password" required>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="btn">Log in</button>
+  </form>
+</div>
+{% endblock %}
