@@ -10,6 +10,9 @@ over XML.
 - **Web app:** https://simple-survey-web.onrender.com/
 - **Take a survey:** https://simple-survey-web.onrender.com/take-survey/
 - **Admin login:** https://simple-survey-web.onrender.com/login/
+Admin Test Credentials
+username: admin
+password: 12345678
 
 > Hosted on Render's free tier alongside the [API](https://github.com/abiemi-ux/simple-survey-api)
 > — the first request after idle time may take 30–60 seconds while both
