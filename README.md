@@ -5,17 +5,27 @@ frontend framework or build step — plain templates, `fetch()`, and
 `DOMParser` talking to the [Survey API](https://github.com/<your-username>/simple-survey-api)
 over XML.
 
+## Live Demo
+
+- **Web app:** https://simple-survey-web.onrender.com/
+- **Take a survey:** https://simple-survey-web.onrender.com/take-survey/
+- **Admin login:** https://simple-survey-web.onrender.com/login/
+
+> Hosted on Render's free tier alongside the [API](https://github.com/abiemi-ux/simple-survey-api)
+> — the first request after idle time may take 30–60 seconds while both
+> services wake up.
+
 ## Prerequisites
 
 - Python 3.12+
-- A running instance of [`simple-survey-api`](https://github.com/<your-username>/simple-survey-api)
+- A running instance of [`simple-survey-api`](https://github.com/abiemi-ux/simple-survey-api)
   — this project has no database of its own; it's a pure client of the API
 - `pip` and `venv`
 
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/simple-survey-web.git
+git clone 'this repo'
 cd simple-survey-web
 
 python -m venv venv
